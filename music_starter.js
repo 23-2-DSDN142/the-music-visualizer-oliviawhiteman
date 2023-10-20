@@ -108,6 +108,7 @@ function draw_one_frame(words,vocal,bass,drum,other){
     puddles.push(loadImage('assets/puddle-01.png'));
     puddles.push(loadImage('assets/puddle-02.png'));
     puddles.push(loadImage('assets/puddle-03.png'));
+    puddles.push(loadImage('assets/puddle-04.png'));
     
 
     tester= loadImage('assets/TEST.png')
@@ -232,7 +233,7 @@ image(hills,0,0)
 image(tent,230,150)
 //PUDDLE//
 
-var puddleframe = int(map(other,0,100,0,3));
+var puddleframe = int(map(other,0,100,0,4));
 console.log(puddleframe);
 push();
 scale(0.2)
@@ -333,9 +334,12 @@ sixrainy = -500*2
 
 
 
-// if(song.currentTime() > 20){
+// if(song.currentTime()== 5){
 //   image(tester,0,0)
+// } else {
+//   image(tester,999999,999999)
 // }
+
 
  
 
