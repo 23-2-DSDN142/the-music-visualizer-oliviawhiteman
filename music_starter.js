@@ -5,8 +5,8 @@ let firstRun = true
 let fire = []
 //BACKGROUND//
 let hills; 
-
-
+let tent;
+let tester;
 //RAIN//
 
 let onerain;
@@ -44,9 +44,9 @@ let sixcloudX;
 
 let tree = []; //Empty thingy for tree animation thing
 var Xtreearray = [-200*10,-150*10,0*10,100*10,200*10,300*10,500*10,100*10]; // tree X Coordinate Array (used in tree swaying section)
-var Ytreearray = [20*5,50*15]; // tree Y Coordinate Array  (used in tree swaying section)
-var Xtreearraytwo = [-280*6,-100*6,0*6,170*6,230*6,]
-
+var Ytreearray = [20*5,50*15,200*2]; // tree Y Coordinate Array  (used in tree swaying section)
+var Xtreearraytwo = [-280*6,-100*6,0*6,170*6,230*6,490*6,430*6,590*6,600*6]
+var Xtreearraythree = [-20*100,300*5]
 
 function draw_one_frame(vocal,bass,drum,other){
   if (firstRun){
@@ -55,6 +55,7 @@ function draw_one_frame(vocal,bass,drum,other){
     //BACKGROUND//
 
     hills= loadImage('assets/hills.png')
+    tent = loadImage('assets/tent.png')
 
 //RAIN//
 
@@ -101,11 +102,11 @@ function draw_one_frame(vocal,bass,drum,other){
     fire.push(loadImage('assets/Ffire-03.png'));
     fire.push(loadImage('assets/Ffire-04.png'));
 
-    
+    tester= loadImage('assets/TEST.png')
 
     firstRun = false
   }
-  background(225)
+  background(25, 26, 28)
 
 
 
@@ -185,7 +186,7 @@ if (sixcloudX < -cloudSix.width){
 sixcloudX = 1000*4
 }
 // CLOUD SECTION END //
-//image(hills,0,0)
+image(hills,0,0)
  
   // TREE SECTION START//
 
@@ -193,35 +194,49 @@ sixcloudX = 1000*4
   console.log(treeoneFrame);
   push();
   scale(0.15)
- image(tree[treeoneFrame],Xtreearraytwo[0],Ytreearray[1])
+  image(tree[treeoneFrame],Xtreearraytwo[0],Ytreearray[1])
   image(tree[treeoneFrame],Xtreearraytwo[1],Ytreearray[1])
   image(tree[treeoneFrame],Xtreearraytwo[2],Ytreearray[1])
   image(tree[treeoneFrame],Xtreearraytwo[3],Ytreearray[1])
   image(tree[treeoneFrame],Xtreearraytwo[4],Ytreearray[1])
+  image(tree[treeoneFrame],Xtreearraytwo[5],Ytreearray[1])
+  image(tree[treeoneFrame],Xtreearraytwo[6],Ytreearray[1])
+  image(tree[treeoneFrame],Xtreearraytwo[7],Ytreearray[1])
   pop();
 
   
-  var VocalFrame = int(map(drum,0,100,0,4));//responds to drums
-  console.log(VocalFrame);
+  var treetwoFrame = int(map(drum,0,100,0,4));//responds to drums
+  console.log(treetwoFrame);
   push();
   scale(0.2)
-  image(tree[VocalFrame],Xtreearray[0],Ytreearray[0])
-  image(tree[VocalFrame],Xtreearray[1],Ytreearray[0])
-  image(tree[VocalFrame],Xtreearray[2],Ytreearray[0])
-  image(tree[VocalFrame],Xtreearray[3],Ytreearray[0])
-  image(tree[VocalFrame],Xtreearray[4],Ytreearray[0])
-  image(tree[VocalFrame],Xtreearray[5],Ytreearray[0])
-  image(tree[VocalFrame],Xtreearray[6],Ytreearray[0])
-  image(tree[VocalFrame],Xtreearray[7],Ytreearray[0])
+  image(tree[treetwoFrame],Xtreearray[0],Ytreearray[0])
+  image(tree[treetwoFrame],Xtreearray[1],Ytreearray[0])
+  image(tree[treetwoFrame],Xtreearray[2],Ytreearray[0])
+  image(tree[treetwoFrame],Xtreearray[3],Ytreearray[0])
+  image(tree[treetwoFrame],Xtreearray[4],Ytreearray[0])
+  image(tree[treetwoFrame],Xtreearray[5],Ytreearray[0])
+  image(tree[treetwoFrame],Xtreearray[6],Ytreearray[0])
+  image(tree[treetwoFrame],Xtreearray[7],Ytreearray[0])
   pop();
-// TREE SECTION END//
 
+//tent//
+
+image(tent,230,150)
+
+var treethreeframe = int(map(drum,0,100,0,4));//responds to drums
+  console.log(treethreeframe);
+  push();
+  scale(0.25)
+  image(tree[treethreeframe],Xtreearraythree[0],Ytreearray[2])
+  image(tree[treethreeframe],Xtreearraythree[1],Ytreearray[2])
+  pop();
+  // TREE SECTION END//
 //FIRE SECTION START//
   var fireframe = int(map(bass,0,100,0,4));//responds to drums
   console.log(fireframe);
   push();
-  scale(0.1)
-  image(fire[fireframe],50*10,500*10)//fire grows larger in repsonse to drums
+  scale(0.2)
+  image(fire[fireframe],80*5,500*5)//fire grows larger in repsonse to drums
   pop();
 
 // FIRE SECTION END//
@@ -301,6 +316,13 @@ sixrainy = -500*2
 
 //RAIN SECTION END//
 
+//tent//
+
+
+
+// if(song.currentTime() > 20){
+//   image(tester,0,0)
+// }
 
  
 
