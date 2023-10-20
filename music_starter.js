@@ -39,6 +39,8 @@ let fourcloudX;
 let fivecloudX;
 let sixcloudX;
 
+//puddle
+let puddles =[];
 
 //TREES//
 
@@ -48,7 +50,7 @@ var Ytreearray = [20*5,50*15,200*2]; // tree Y Coordinate Array  (used in tree s
 var Xtreearraytwo = [-280*6,-100*6,0*6,170*6,230*6,490*6,430*6,590*6,600*6]
 var Xtreearraythree = [-20*100,300*5]
 
-function draw_one_frame(vocal,bass,drum,other){
+function draw_one_frame(words,vocal,bass,drum,other){
   if (firstRun){
     rectMode (CENTER);
 
@@ -102,6 +104,12 @@ function draw_one_frame(vocal,bass,drum,other){
     fire.push(loadImage('assets/Ffire-03.png'));
     fire.push(loadImage('assets/Ffire-04.png'));
 
+    //PUDDLE//
+    puddles.push(loadImage('assets/puddle-01.png'));
+    puddles.push(loadImage('assets/puddle-02.png'));
+    puddles.push(loadImage('assets/puddle-03.png'));
+    
+
     tester= loadImage('assets/TEST.png')
 
     firstRun = false
@@ -113,7 +121,7 @@ function draw_one_frame(vocal,bass,drum,other){
   //CLOUD SECTION START// 
 
  //CLOUD ONE
-let yoffset = map(other,0,100,-250,-150)
+let yoffset = map(other,0,100,-250,-50)
 push();
 scale(0.25)
 image(cloudOne,onecloudX,1+yoffset)
@@ -125,7 +133,7 @@ if (onecloudX < -cloudOne.width){
 onecloudX = 1000*4
 }
 //CLOUD TWO
-let twoyoffset = map(other,0,100,-100,0)
+let twoyoffset = map(other,0,100,-100,100)
 push();
 scale(0.25)
 image(cloudTwo,twocloudX,0+twoyoffset)
@@ -137,7 +145,7 @@ if (twocloudX < -cloudTwo.width){
 twocloudX = 1000*4
 }
 //CLOUD THREE
-let threeyoffset = map(other,0,100,-100,0)
+let threeyoffset = map(other,0,100,-100,100)
 push();
 scale(0.25)
 image(cloudThree,threecloudX,0+threeyoffset)
@@ -150,7 +158,7 @@ threecloudX = 1000*4
 }
 
 //CLOUD FOUR
-let fouryoffset = map(other,0,100,-350,-250,)
+let fouryoffset = map(other,0,100,-350,-150,)
 push();
 scale(0.25)
 image(cloudFour,fourcloudX,0+fouryoffset)
@@ -162,7 +170,7 @@ if (fourcloudX < -cloudFour.width){
 fourcloudX = 1000*4
 }
 //CLOUD FIVE
-let fiveyoffset = map(other,0,100,-200,-100)
+let fiveyoffset = map(other,0,100,-200,0)
 push();
 scale(0.25)
 image(cloudFive,fivecloudX,0+fiveyoffset)
@@ -174,7 +182,7 @@ if (fivecloudX < -cloudFive.width){
 fivecloudX = 1000*4
 }
 //CLOUDSIX
-let sixyoffset = map(other,0,100,-300,-200)
+let sixyoffset = map(other,0,100,-300,-100)
 push();
 scale(0.25)
 image(cloudSix,sixcloudX,0+sixyoffset)
@@ -190,7 +198,7 @@ image(hills,0,0)
  
   // TREE SECTION START//
 
-  var treeoneFrame = int(map(drum,0,100,0,4));//responds to drums
+  var treeoneFrame = int(map(vocal,0,100,0,4));//responds to drums
   console.log(treeoneFrame);
   push();
   scale(0.15)
@@ -222,8 +230,16 @@ image(hills,0,0)
 //tent//
 
 image(tent,230,150)
+//PUDDLE//
 
-var treethreeframe = int(map(drum,0,100,0,4));//responds to drums
+var puddleframe = int(map(other,0,100,0,3));
+console.log(puddleframe);
+push();
+scale(0.2)
+image(puddles[puddleframe],-90*10,300*5)
+pop();
+
+var treethreeframe = int(map(bass,0,100,0,4));
   console.log(treethreeframe);
   push();
   scale(0.25)
@@ -232,7 +248,7 @@ var treethreeframe = int(map(drum,0,100,0,4));//responds to drums
   pop();
   // TREE SECTION END//
 //FIRE SECTION START//
-  var fireframe = int(map(bass,0,100,0,4));//responds to drums
+  var fireframe = int(map(bass,0,100,0,4));
   console.log(fireframe);
   push();
   scale(0.2)
@@ -313,10 +329,7 @@ scale(0.5)
 if (sixrainy > 1000*2){
 sixrainy = -500*2
 }
-
 //RAIN SECTION END//
-
-//tent//
 
 
 
