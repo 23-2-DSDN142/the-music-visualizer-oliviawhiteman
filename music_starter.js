@@ -50,6 +50,10 @@ var Ytreearray = [20*5,50*15,200*2]; // tree Y Coordinate Array  (used in tree s
 var Xtreearraytwo = [-280*6,-100*6,0*6,170*6,230*6,490*6,430*6,590*6,600*6]
 var Xtreearraythree = [-20*100,300*5]
 
+// moon 
+
+let moonx;
+
 function draw_one_frame(words,vocal,bass,drum,other){
   if (firstRun){
     rectMode (CENTER);
@@ -111,12 +115,21 @@ function draw_one_frame(words,vocal,bass,drum,other){
     puddles.push(loadImage('assets/puddle-04.png'));
     
 
-    tester= loadImage('assets/TEST.png')
+   moonx = 1000
+
+
 
     firstRun = false
   }
   background(25, 26, 28)
 
+
+fill(255)
+push();
+ellipse(moonx,100,100,100)
+pop();
+
+moonx = moonx -0.05
 
 
   //CLOUD SECTION START// 
@@ -199,7 +212,7 @@ image(hills,0,0)
  
   // TREE SECTION START//
 
-  var treeoneFrame = int(map(vocal,0,100,0,4));//responds to drums
+  var treeoneFrame = int(map(bass,0,100,0,4));
   console.log(treeoneFrame);
   push();
   scale(0.15)
@@ -214,7 +227,7 @@ image(hills,0,0)
   pop();
 
   
-  var treetwoFrame = int(map(drum,0,100,0,4));//responds to drums
+  var treetwoFrame = int(map(drum,0,100,0,4));
   console.log(treetwoFrame);
   push();
   scale(0.2)
@@ -240,7 +253,7 @@ scale(0.2)
 image(puddles[puddleframe],-90*10,300*5)
 pop();
 
-var treethreeframe = int(map(bass,0,100,0,4));
+var treethreeframe = int(map(other,0,100,0,4));
   console.log(treethreeframe);
   push();
   scale(0.25)
@@ -249,7 +262,7 @@ var treethreeframe = int(map(bass,0,100,0,4));
   pop();
   // TREE SECTION END//
 //FIRE SECTION START//
-  var fireframe = int(map(bass,0,100,0,4));
+  var fireframe = int(map(vocal,0,100,0,4));
   console.log(fireframe);
   push();
   scale(0.2)
@@ -334,11 +347,30 @@ sixrainy = -500*2
 
 
 
-// if(song.currentTime()== 5){
-//   image(tester,0,0)
-// } else {
-//   image(tester,999999,999999)
-// }
+if(song.currentTime()> 85){
+  onerainy = onerainy+ 100
+  tworainy = tworainy + 100 
+  threerainy = threerainy + 100 
+  fourrainy = fourrainy+ 100 
+  fiverainy = fiverainy + 100 
+  sixrainy = sixrainy + 100 
+  
+  onecloudX = onecloudX - 100
+  twocloudX = twocloudX - 100
+  threecloudX = threecloudX - 100
+  fourcloudX = fourcloudX - 100
+  fivecloudX = fivecloudX - 100
+  sixcloudX = sixcloudX - 100
+
+ drum = drum/3
+ bass = bass/3
+ other = other/3
+
+}
+
+if(song.currentTime()> 111){
+vocal = vocal/3
+}
 
 
  
